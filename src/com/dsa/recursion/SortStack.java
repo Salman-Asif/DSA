@@ -1,7 +1,6 @@
 package com.dsa.recursion;
 
 import java.util.ArrayDeque;
-import java.util.Deque;
 
 public class SortStack {
 
@@ -44,60 +43,44 @@ public class SortStack {
      */
 
 
-    public Stack<Integer> sortStack(Stack<Integer> stack) {
-        if(stack.size() == 1) {
-            return stack;
+    public Stack<Integer> sortStack(Stack<Integer> stackLocal) {
+        if(stackLocal.size() == 1) {
+            return stackLocal;
         }
 
-        int topMostElementOfPrev = stack.pop();
+        int topMostElementOfPrev = stackLocal.pop();
 
-        Stack<Integer> sortedSubStack = sortStack(stack);
-        return insertAtCorrectPos(sortedSubStack, topMostElementOfPrev);
+        Stack<Integer> sortedSubStackLocal = sortStack(stackLocal);
+        return insertAtCorrectPos(sortedSubStackLocal, topMostElementOfPrev);
     }
 
 
-    private Stack<Integer> insertAtCorrectPos(Stack<Integer> sortedStack, int element) {
-        if(sortedStack.isEmpty() || element >= sortedStack.peek()) {
-            sortedStack.push(element);
-            return sortedStack;
+    private Stack<Integer> insertAtCorrectPos(Stack<Integer> sortedStackLocal, int element) {
+        if(sortedStackLocal.isEmpty() || element >= sortedStackLocal.peek()) {
+            sortedStackLocal.push(element);
+            return sortedStackLocal;
         }
 
-        int topElementPrev = sortedStack.pop();
-        Stack<Integer> currentSortedSubStack = insertAtCorrectPos(sortedStack, element);
-        currentSortedSubStack.push(topElementPrev);
+        int topElementPrev = sortedStackLocal.pop();
+        Stack<Integer> currentSortedSubStackLocal = insertAtCorrectPos(sortedStackLocal, element);
+        currentSortedSubStackLocal.push(topElementPrev);
 
-        return currentSortedSubStack;
+        return currentSortedSubStackLocal;
     }
+
 
     public static void main(String args[]) {
-        Stack<Integer> stack = new Stack<>();
-        stack.push(5);
-        stack.push(10);
-        stack.push(-1);
-        stack.push(2);
-        stack.push(0);
+        Stack<Integer> stackLocal = new Stack<>();
+        stackLocal.push(5);
+        stackLocal.push(10);
+        stackLocal.push(-1);
+        stackLocal.push(2);
+        stackLocal.push(0);
+        stackLocal.push(1);
 
         SortStack sortStack = new SortStack();
-        System.out.println(sortStack.sortStack(stack));
+        System.out.println(sortStack.sortStack(stackLocal));
 
 
     }
-}
-
-
-class Stack<T> extends ArrayDeque<T> {
-
-
-    public T pop() {
-        return removeFirst();
-    }
-
-    public void push(T e) {
-        addFirst(e);
-    }
-
-    public T peek() {
-        return getFirst();
-    }
-
 }
