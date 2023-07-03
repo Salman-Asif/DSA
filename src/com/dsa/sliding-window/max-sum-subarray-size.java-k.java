@@ -1,7 +1,9 @@
+package com.dsa.sliding-window;
+
 import java.io.*;
 import java.util.*;
 
-class Solution{
+public class Solution{
      long maximumSumSubarray(int k, ArrayList<Integer> arr,int N){
         
         int i =0, j=0;
