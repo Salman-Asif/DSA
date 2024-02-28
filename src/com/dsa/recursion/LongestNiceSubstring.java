@@ -1,4 +1,12 @@
-class Solution {
+package com.dsa.recursion;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class LongestNiceSubstring {
+    public static void main(String[] args) {
+
+    }
     public String longestNiceSubstring(String s) {
         if (s.length() < 2) return "";
         char[] arr = s.toCharArray();
